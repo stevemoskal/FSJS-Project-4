@@ -35,4 +35,56 @@
      let phraseIndex = Math.floor(Math.random() * this.phrases.length);
      return this.phrases[phraseIndex];
    }
- }
+
+   /**
+   * Begins game by selecting a random phrase and displaying it to user
+   */
+
+   startGame() {
+     const overlay = document.getElementById('overlay');
+     overlay.style.display = 'none';
+     const phrase = new Phrase(this.activePhrase);
+     phrase.addPhraseToDisplay(phrase);
+   }
+
+   checkForWin() {
+     const div = document.getElementById('phrase');
+     const listItems = div.getElementsByTagName('li');
+     for (let i = 0; i < listItems.length; i++) {
+        if ( listItems[i].classList.includes('hide') ) {
+          return false;
+          break;
+        }
+        return true;
+   }
+  }
+
+  /**
+  * Increases the value of the missed property
+  * Removes a life from the scoreboard
+  * Checks if player has remaining lives and ends game if player is out
+  */
+
+  removeLife() {
+    const div = document.getElementById('scoreboard');
+    const listItems = div.getElementsByTagName('li');
+    if (this.missed === 0) {
+      this.missed++;
+      listItems[0].firstElementChild.src = 'images/lostHeart.png';
+    } else if (this.missed === 1) {
+      this.missed++;
+      listItems[1].firstElementChild.src = 'images/lostHeart.png';
+    } else if (this.missed === 2) {
+      this.missed++;
+      listItems[2].firstElementChild.src = 'images/lostHeart.png';
+    } else if (this.missed === 3) {
+      this.missed++;
+      listItems[3].firstElementChild.src = 'images/lostHeart.png';
+    } else if (this.missed === 4) {
+      this.missed++;
+      listItems[4].firstElementChild.src = 'images/lostHeart.png';
+    } else if (this.missed === 5) {
+      this.gameOver();
+    }
+  }
+}
