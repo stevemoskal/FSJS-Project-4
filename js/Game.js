@@ -6,7 +6,7 @@
    constructor(){
      this.missed = 0;
      this.phrases = this.createPhrases();
-     this.activePhrase = this.getRandomPhrase();
+     this.activePhrase = null;
    }
 
    /* Creates phrases for use in game
@@ -43,7 +43,8 @@
    startGame() {
      const overlay = document.getElementById('overlay');
      overlay.style.display = 'none';
-     const phrase = new Phrase(this.activePhrase);
+     const phrase = new Phrase(this.getRandomPhrase());
+     this.activePhrase = phrase;
      phrase.addPhraseToDisplay(phrase);
    }
 
@@ -86,5 +87,23 @@
     } else if (this.missed === 5) {
       this.gameOver();
     }
+  }
+
+  /**
+  * Displays game over message
+  * @param {boolean} gameWon - Whether or not the user won the game
+  */
+
+  gameOver() {
+    const overlay = document.getElementById('overlay');
+    const message = document.getElementById('game-over-message');
+    if (this.checkForWin()) {
+      message.textContent = 'Great Work, You Won!';
+      overlay.classList.replace('start', 'win');
+    } else if (this.missed === 5) {
+      message.textContent = 'Better Luck Next Time!';
+      overlay.classList.replace('start', 'lose');
+    }
+    overlay.style.display = 'flex';
   }
 }
