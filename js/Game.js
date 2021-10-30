@@ -46,6 +46,7 @@
      const phrase = new Phrase(this.getRandomPhrase());
      this.activePhrase = phrase;
      phrase.addPhraseToDisplay(phrase);
+
    }
 
    checkForWin() {
@@ -98,10 +99,10 @@
     const overlay = document.getElementById('overlay');
     const message = document.getElementById('game-over-message');
     if (this.checkForWin()) {
-      message.textContent = 'Great Work, You Won!';
+      message.textContent = `Great Work, You Won! The answer was ${this.activePhrase.phrase}!`;
       overlay.classList.replace('start', 'win');
     } else if (this.missed === 5) {
-      message.textContent = 'You\'re out of Lives, Better Luck Next Time!';
+      message.textContent = `You're out of Lives, Better Luck Next Time! The answer was ${this.activePhrase.phrase}!`;
       overlay.classList.replace('start', 'lose');
     }
     overlay.style.display = 'flex';
