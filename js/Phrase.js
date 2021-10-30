@@ -41,6 +41,7 @@
      for (let i = 0; i < listItems.length; i++) {
         if ( listItems[i].textContent === letter) {
           listItems[i].classList.add('show');
+          listItems[i].classList.remove('hide');
         }
      }
    }

@@ -52,7 +52,7 @@
      const div = document.getElementById('phrase');
      const listItems = div.getElementsByTagName('li');
      for (let i = 0; i < listItems.length; i++) {
-        if ( listItems[i].classList.includes('hide') ) {
+        if ( listItems[i].className.includes('hide') ) {
           return false;
           break;
         }
@@ -105,5 +105,14 @@
       overlay.classList.replace('start', 'lose');
     }
     overlay.style.display = 'flex';
+  }
+
+  /**
+  * Handles onscreen keyboard button clicks
+  * @param (HTMLButtonElement) button - The clicked button element
+  */
+
+  handleInteraction(button) {
+    console.log(button);
   }
 }
