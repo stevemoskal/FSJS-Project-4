@@ -56,8 +56,8 @@
           return false;
           break;
         }
-        return true;
    }
+   return true;
   }
 
   /**
@@ -101,7 +101,7 @@
       message.textContent = 'Great Work, You Won!';
       overlay.classList.replace('start', 'win');
     } else if (this.missed === 5) {
-      message.textContent = 'Better Luck Next Time!';
+      message.textContent = 'You\'re out of Lives, Better Luck Next Time!';
       overlay.classList.replace('start', 'lose');
     }
     overlay.style.display = 'flex';
@@ -113,6 +113,19 @@
   */
 
   handleInteraction(button) {
+    const guessedLetter = button.textContent;
+    const phrase = game.activePhrase;
     console.log(button);
+    button.disabled = true;
+    if (phrase.checkLetter(guessedLetter)) {
+      button.classList.add('chosen');
+      phrase.showMatchedLetter(guessedLetter);
+      if (game.checkForWin()) {
+          game.gameOver();
+      }
+    } else {
+      button.classList.add('wrong');
+      game.removeLife();
+    }
   }
 }
