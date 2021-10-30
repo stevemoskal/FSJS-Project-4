@@ -22,7 +22,13 @@
             'French Bulldog',
             'Labrador Retriever',
             'Poodle',
-            'Puggle'];
+            'Puggle',
+            'Newfoundland',
+            'Saint Bernard',
+            'Siberian Husky',
+            'Yorkshire Terrier',
+            'Rottweiler',
+            'German Shepherd'];
     return phrases;
    }
 
@@ -41,7 +47,18 @@
    */
 
    startGame() {
+     const div = document.getElementById('phrase');
+     const scoreboard = document.getElementById('scoreboard');
+     const listItems = scoreboard.getElementsByTagName('li');
      const overlay = document.getElementById('overlay');
+     div.firstElementChild.innerHTML = '';
+     for (let i = 0; i < keys.length; i++) {
+       keys[i].disabled = false;
+       keys[i].className = 'key';
+     }
+     for (let i = 0; i < listItems.length; i++) {
+        listItems[i].firstElementChild.src = 'images/liveHeart.png';
+     }
      overlay.style.display = 'none';
      const phrase = new Phrase(this.getRandomPhrase());
      this.activePhrase = phrase;
@@ -97,6 +114,7 @@
 
   gameOver() {
     const overlay = document.getElementById('overlay');
+    overlay.className = 'start';
     const message = document.getElementById('game-over-message');
     if (this.checkForWin()) {
       message.textContent = `Great Work, You Won! The answer was ${this.activePhrase.phrase}!`;
@@ -116,7 +134,6 @@
   handleInteraction(button) {
     const guessedLetter = button.textContent;
     const phrase = game.activePhrase;
-    console.log(button);
     button.disabled = true;
     if (phrase.checkLetter(guessedLetter)) {
       button.classList.add('chosen');
