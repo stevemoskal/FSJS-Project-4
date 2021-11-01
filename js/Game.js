@@ -34,7 +34,7 @@
             { breed: 'German Shepherd', img: 'images/german-shepherd.jpg' },
             { breed: 'Shiba Inu', img: 'images/shiba.jpg' }
             ];
-    phrases.forEach(object => newPhraseArray.push({breed: new Phrase(object.breed), img: object.img}))
+    phrases.forEach(object => newPhraseArray.push({breed: new Phrase(object.breed), img: object.img}));
     return newPhraseArray;
    }
 
