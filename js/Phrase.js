@@ -7,6 +7,11 @@
      this.phrase = phrase.toLowerCase();
    }
 
+   /**
+   * Takes the phrase from the constructor and displays it on the page
+   */
+
+
    addPhraseToDisplay() {
      const div = document.getElementById('phrase');
      let displayPhrase = '';

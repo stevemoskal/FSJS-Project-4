@@ -51,7 +51,7 @@
 
    /**
    * Begins game by selecting a random phrase and displaying it to user
-   * Add event listener for keyboard use
+   *
    */
 
    startGame() {
@@ -64,11 +64,22 @@
      phrase.addPhraseToDisplay(phrase);
    }
 
+   /**
+   * Checks if the letter has already been guessed (for keyup listener)
+   */
+
+
    isLetterGuessed(button) {
      if (button.disabled) {
        return true;
      }
    }
+
+   /**
+   * Checks if the game has been Won by the user
+   * @return true or false depending on outcome
+   */
+
 
    checkForWin() {
      const div = document.getElementById('phrase');
@@ -109,7 +120,7 @@
 
   /**
   * Displays game over message
-  *
+  * Resets the game board for a new game
   */
 
   gameOver() {
