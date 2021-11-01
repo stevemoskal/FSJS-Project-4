@@ -15,6 +15,7 @@
    */
 
    createPhrases() {
+     const newPhraseArray = [];
      const phrases =  [
             { breed: 'American Staffordshire Terrier', img: 'images/amstaff.jpg' },
             { breed: 'Alaskan Malamute', img: 'images/alaskmal.jpg' },
@@ -33,7 +34,8 @@
             { breed: 'German Shepherd', img: 'images/german-shepherd.jpg' },
             { breed: 'Shiba Inu', img: 'images/shiba.jpg' }
             ];
-    return phrases;
+    phrases.forEach(object => newPhraseArray.push({breed: new Phrase(object.breed), img: object.img}))
+    return newPhraseArray;
    }
 
    /**
@@ -57,7 +59,7 @@
      const overlay = document.getElementById('overlay');
      div.firstElementChild.innerHTML = '';
      overlay.style.display = 'none';
-     const phrase = new Phrase(this.getRandomPhrase());
+     const phrase = this.getRandomPhrase();
      this.activePhrase = phrase;
      phrase.addPhraseToDisplay(phrase);
    }
