@@ -12,6 +12,7 @@
 
    /* Creates phrases for use in game
    * @return {array} An array of phrases that could be used in the game
+   * images provided by https://dogtime.com/dog-breeds/profiles
    */
 
    createPhrases() {
