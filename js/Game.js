@@ -74,7 +74,6 @@
      for (let i = 0; i < listItems.length; i++) {
         if ( listItems[i].className.includes('hide') ) {
           return false;
-          break;
         }
    }
    return true;
