@@ -176,6 +176,12 @@ button {
   border-radius: 5px;
 }
 
+#breed-pic {
+  display: none;
+  margin: 0 auto;
+  border-radius: 10%;
+}
+
 .title {
   color: #FFF;
 }

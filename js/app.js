@@ -16,3 +16,23 @@ for (i = 0; i < keys.length; i++) {
     game.handleInteraction(e.target);
   });
 }
+
+
+window.addEventListener('keyup', (e) => {
+  const overlay = document.getElementById('overlay');
+  if (overlay.style.display === 'none') {
+       const guessedLetter = e.key;
+       let matchedBtn = null;
+       for (let i = 0; i < keys.length; i++) {
+         if (guessedLetter === keys[i].textContent) {
+           matchedBtn = keys[i];
+           break;
+         }
+       }
+       if (matchedBtn !== null) {
+         if (!game.isLetterGuessed(matchedBtn)) {
+           game.handleInteraction(matchedBtn);
+         }
+       }
+  }
+});
